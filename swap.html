@@ -17,29 +17,29 @@
   </header>
   <div class="card">
     <div class="section">
-      <label for="from">From</label>
-      <input id="from" type="number" placeholder="0.0" />
-      <select>
+      <label for="swap-from-amount">From</label>
+      <input id="swap-from-amount" type="number" placeholder="0.0" />
+      <select id="swap-from-token">
         <option>USDC</option>
         <option>ETH</option>
       </select>
     </div>
-
+    
     <div class="section">
-      <label for="to">To</label>
-      <input id="to" type="number" placeholder="0.0" />
-      <select>
+      <label for="swap-to-amount">To</label>
+      <input id="swap-to-amount" type="number" placeholder="0.0" />
+      <select id="swap-to-token">
         <option>USDC</option>
         <option>ETH</option>
       </select>
     </div>
+    
 
-    <button class="swap" onclick="alert('Swap feature coming soon')">Swap</button>
+    <button class="swap" onclick="handleSwap()">Swap</button>
   </div>
 
-  <!-- Ethers.js library -->
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
-  <!-- Your wallet connection logic -->
   <script src="wallet.js"></script>
+  <script src="formHandler.js"></script>
 </body>
 </html>
