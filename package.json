@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Delta-Neutral-Rebalance-Hook/front-end#readme",
   "dependencies": {
+    "ethers": "^6.13.5",
     "express": "^5.1.0"
   }
 }

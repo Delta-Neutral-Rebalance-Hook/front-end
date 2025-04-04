@@ -1,39 +1,35 @@
-// wallet.js
-const connectBtn = document.getElementById('connectBtn');
-const walletInfo = document.getElementById('walletInfo');
+let currentAccount = null;
 
-async function connectWallet() {
-  if (!window.ethereum) {
-    alert("MetaMask not found. Please install it: https://metamask.io/");
-    return;
-  }
+window.addEventListener('DOMContentLoaded', () => {
+  const connectBtn = document.getElementById('connectBtn');
+  const walletInfo = document.getElementById('walletInfo');
 
-  try {
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-    const signer = await provider.getSigner();
-    const address = await signer.getAddress();
-    const balance = await provider.getBalance(address);
-    const ethBalance = ethers.formatEther(balance);
+  connectBtn.addEventListener('click', async () => {
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts'
+        });
 
-    walletInfo.innerHTML = `
-      <div><strong>Address:</strong> <span id="addr">${address.slice(0, 6)}...${address.slice(-4)}</span></div>
-      <div><strong>Balance:</strong> ${ethBalance} ETH</div>
-      <div class="copy-hint" onclick="navigator.clipboard.writeText('${address}'); alert('Copied!')">Click to copy full address</div>
-    `;
-    connectBtn.textContent = "Connected";
-    connectBtn.disabled = true;
+        currentAccount = accounts[0];
+        window.currentAccount = currentAccount; // make global for other scripts
 
-  } catch (err) {
-    console.error("Wallet connection failed", err);
-    alert("Wallet connection failed.");
-  }
-}
+        walletInfo.innerText = currentAccount;
+        walletInfo.style.cursor = 'pointer';
 
-connectBtn.addEventListener('click', connectWallet);
+        walletInfo.addEventListener('click', () => {
+          navigator.clipboard.writeText(currentAccount).then(() => {
+            alert('Address copied to clipboard');
+          });
+        });
 
-window.addEventListener("load", async () => {
-  if (window.ethereum && ethereum.selectedAddress) {
-    await connectWallet();
-  }
+        console.log("✅ Connected:", currentAccount);
+      } catch (err) {
+        console.error("❌ Wallet connection failed:", err);
+        alert("Failed to connect wallet.");
+      }
+    } else {
+      alert('🦊 Please install MetaMask!');
+    }
+  });
 });
