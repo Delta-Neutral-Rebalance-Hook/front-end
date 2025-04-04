@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Uniswap Lite</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+<body>
+  <header>
+    <h1>Uniswap Lite</h1>
+    <div>
+      <button id="connectBtn">Connect Wallet</button>
+      <div id="walletInfo"></div>
+    </div>
+  </header>
+  <div class="card">
+    <div class="section">
+      <label for="from">Pair 1</label>
+      <input id="from" type="number" placeholder="0.0" />
+      <select>
+        <option>USDC</option>
+        <option>ETH</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <label for="to">Pair 2</label>
+      <input id="to" type="number" placeholder="0.0" />
+      <select>
+        <option>USDC</option>
+        <option>ETH</option>
+      </select>
+    </div>
+
+    <button class="swap" onclick="alert('Swap feature coming soon')">Review</button>
+  </div>
+
+  <!-- Ethers.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
+  <!-- Your wallet connection logic -->
+  <script src="wallet.js"></script>
+</body>
+</html>

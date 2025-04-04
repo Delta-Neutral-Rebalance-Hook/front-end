@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uniswap Lite</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <h1>Uniswap Lite</h1>
+    </div>
+
+    <nav class="header-center">
+      <a href="swap.html" class="button-link">Go to Exchange Page</a>
+      <a href="pool.html" class="button-link">Go to Pool Page</a>
+    </nav>
+
+    <div class="wallet-box">
+      <button id="connectBtn">Connect Wallet</button>
+      <div id="walletInfo">
+        <small>Click to copy full address</small>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content could go here -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
+  <script src="wallet.js"></script>
+</body>
+</html>
